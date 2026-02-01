@@ -4,6 +4,7 @@ package io.sancta.sanctorum.domain;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
@@ -14,6 +15,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 @Table(schema = "world", name = "country")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Country {
