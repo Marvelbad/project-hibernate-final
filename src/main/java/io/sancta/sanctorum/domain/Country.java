@@ -14,6 +14,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@Table(schema = "world", name = "country")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Country {
 

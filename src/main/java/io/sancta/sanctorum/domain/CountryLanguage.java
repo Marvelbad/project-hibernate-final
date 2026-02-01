@@ -13,6 +13,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @Entity
+@Table(schema = "world", name = "country_language")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class CountryLanguage {
 
@@ -26,8 +27,8 @@ public class CountryLanguage {
 
     String language;
 
-    @Type(type = "org.hibernate.type.NumericBooleanType")
     @Column(name = "is_official", columnDefinition = "BIT")
+    @Type(type = "org.hibernate.type.NumericBooleanType")
     Boolean isOfficial;
 
     BigDecimal percentage;
