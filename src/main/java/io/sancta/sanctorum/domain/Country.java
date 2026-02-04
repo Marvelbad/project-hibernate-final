@@ -4,7 +4,6 @@ package io.sancta.sanctorum.domain;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
@@ -15,7 +14,6 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@NoArgsConstructor
 @Table(schema = "world", name = "country")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Country {
@@ -37,7 +35,7 @@ public class Country {
     String region;
 
     @Column(name = "surface_area")
-    BigInteger surfaceArea;
+    BigDecimal surfaceArea;
 
     @Column(name = "indep_year")
     Short independenceYear;

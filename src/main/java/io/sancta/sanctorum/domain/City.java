@@ -11,7 +11,6 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @Setter
 @Entity
-@NoArgsConstructor
 @Table(schema = "world", name = "city")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class City {
