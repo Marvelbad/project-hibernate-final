@@ -9,6 +9,7 @@ import io.sancta.sanctorum.dao.CountryDAO;
 import io.sancta.sanctorum.domain.City;
 import io.sancta.sanctorum.domain.Country;
 import io.sancta.sanctorum.redis.CityCountry;
+import io.sancta.sanctorum.redis.Language;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.Session;
@@ -18,6 +19,7 @@ import org.hibernate.cfg.Configuration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class GeoController {
@@ -85,6 +87,29 @@ public class GeoController {
     }
 
     private List<CityCountry> transformData(List<City> cities) {
-        return null;
+        return cities.stream()
+                .map(city -> CityCountry.builder()
+                        .id(city.getId())
+                        .name(city.getName())
+                        .district(city.getDistrict())
+                        .population(city.getPopulation())
+                        .countryCode(city.getCountry().getCode())
+                        .alternativeCountryCode(city.getCountry().getAlternativeCode())
+                        .continent(city.getCountry().getContinent())
+                        .countryName(city.getCountry().getName())
+                        .continent(city.getCountry().getContinent())
+                        .region(city.getCountry().getRegion())
+                        .continentSurfaceArea(city.getCountry().getSurfaceArea())
+                        .countryPopulation(city.getCountry().getPopulation())
+                        .languages(city.getCountry().getLanguages().stream()
+                                .map(cl ->
+                                        Language.builder()
+                                                .language(cl.getLanguage())
+                                                .isOfficial(cl.getIsOfficial())
+                                                .percentage(cl.getPercentage())
+                                                .build()
+                                ).collect(Collectors.toSet())
+                        ).build()
+                ).toList();
     }
 }
