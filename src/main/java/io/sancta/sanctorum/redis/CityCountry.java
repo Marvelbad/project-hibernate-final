@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.util.Set;
 
 @Builder
-@Getter @Setter
+@Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class CityCountry {
 
